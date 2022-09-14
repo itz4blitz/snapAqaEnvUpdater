@@ -9,13 +9,7 @@ export default class appManager {
           })
     }
 
-    applyMigrations() {
-
+    startApp() {
+        
     }
-
-    runSeedAutoTest(){
-
-    }
-
-
 }

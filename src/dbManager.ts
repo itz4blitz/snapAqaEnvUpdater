@@ -23,12 +23,23 @@ export default class dbManager {
 
     cleanDB() {
         const { execSync } = require('child_process')
-        execSync("npm run seed-autotest")
     }
 
     importSchema() {
         const { execSync } = require('child_process')
         execSync(`cd ${process.env.booker_path}`)
         execSync(`psql -f .\\src\\database\\schema.sql -p ${process.env.port} -U ${process.env.db_user} ${process.env.db_name}`)
+    }
+
+    applyMigrations() {
+        const { execSync } = require('child_process')
+        execSync(`cd ${process.env.booker_path}`)
+        execSync("yarn migrate")
+    }
+
+    runSeedAutoTest() {
+        const { execSync } = require('child_process')
+        execSync(`cd ${process.env.booker_path}\\src\\database`)
+        execSync("npm run seed-autotest")
     }
 }
